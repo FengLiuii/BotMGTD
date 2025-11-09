@@ -145,7 +145,7 @@ def create_attention_visualization(attention_info, output_file):
         return True
         
     except Exception as e:
-        print(f"❌ Failed to create attention visualization: {e}")
+        print(f" Failed to create attention visualization: {e}")
         return False
 
 def create_architecture_diagram(output_file):
@@ -357,7 +357,7 @@ def create_comparison_chart(output_file):
 
 if __name__ == '__main__':
    
-    print("🧪 Testing chart generation utilities...")
+    print(" Testing chart generation utilities...")
     
     
     create_architecture_diagram('test_architecture_diagram.png')

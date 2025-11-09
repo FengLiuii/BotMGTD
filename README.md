@@ -44,7 +44,7 @@ python run_attention_model.py \
 
 
 ## dataset
-data/
+```data/
 ├── Twibot-20/
 │   ├── a_feature.npz   # Account features; processing follows BotRGCN
 │   │                   # https://github.com/LuoUndergradXJTU/TwiBot-22/tree/master/src/BotRGCN/twibot_20
@@ -69,7 +69,7 @@ data/
     ├── follower.npz    # Follower graph
     ├── friend.npz      # Friend graph
     └── label.npz       # Account labels
-
+```
 
 
 ## output file

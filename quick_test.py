@@ -16,7 +16,7 @@ import dgl
 
 def quick_test():
    
-    print("🧪 Quick Test for Attention-based BotMGTD Model")
+    print(" Quick Test for Attention-based BotMGTD Model")
     print("=" * 50)
     
    
@@ -31,23 +31,23 @@ def quick_test():
     
     try:
         
-        print("\n📁 Loading data...")
+        print("\n Loading data...")
         handler = DataHandler()
         handler.load_twibot20_data()
-        print(f"✅ Data loaded successfully")
+        print(f" Data loaded successfully")
         print(f"   - Features shape: {handler.feature_list.shape}")
         print(f"   - Number of relations: {len(handler.he_adjs)}")
         print(f"   - Train samples: {len(handler.train_idx[0])}")
         print(f"   - Test samples: {len(handler.test_idx[0])}")
         
         
-        print("\n🏗️ Creating model...")
+        print("\n Creating model...")
         model = BotMGTD(handler.feature_list.shape[1]).to('cuda' if torch.cuda.is_available() else 'cpu')
-        print(f"✅ Model created successfully")
+        print(f" Model created successfully")
         print(f"   - Model parameters: {sum(p.numel() for p in model.parameters()):,}")
         
         
-        print("\n🔄 Testing forward pass...")
+        print("\n Testing forward pass...")
         with torch.no_grad():
             forward_result = model.forward(handler.he_adjs, handler.feature_list)
             if isinstance(forward_result, tuple) and len(forward_result) == 4:
@@ -56,7 +56,7 @@ def quick_test():
                 aux_fused, target_emb = forward_result
                 attention_weights, importance_weights = None, None
                 
-            print(f"✅ Forward pass successful")
+            print(f" Forward pass successful")
             print(f"   - Target embedding shape: {target_emb.shape}")
             print(f"   - Auxiliary fused shape: {aux_fused.shape}")
             if attention_weights is not None:
@@ -77,7 +77,7 @@ def quick_test():
                     print(f"   - Importance weights shape: {importance_weights.shape}")
         
         
-        print("\n🏃 Testing training step...")
+        print("\n Testing training step...")
         model.train()
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
         
@@ -94,25 +94,25 @@ def quick_test():
         total_loss.backward()
         optimizer.step()
         
-        print(f"✅ Training step successful")
+        print(f" Training step successful")
         print(f"   - NLL Loss: {nll_loss.item():.4f}")
         print(f"   - Diffusion Loss: {diff_loss.item():.4f}")
         print(f"   - Total Loss: {total_loss.item():.4f}")
         
         
-        print("\n🔍 Testing attention analysis...")
+        print("\n Testing attention analysis...")
         attention_info = model.get_attention_analysis(handler.he_adjs, handler.feature_list)
         if attention_info is not None:
-            print(f"✅ Attention analysis successful")
+            print(f" Attention analysis successful")
             #print(f"   - Relation importance shape: {attention_info['relation_importance']}")
             #print(f"   - Mean importance weights: {attention_info['relation_importance'].mean(axis=0)}")
         else:
-            print("⚠️ No attention information available")
+            print(" No attention information available")
         
-        print("\n🎉 All tests passed! Model is ready for training.")
+        print("\n All tests passed! Model is ready for training.")
         
     except Exception as e:
-        print(f"❌ Test failed: {e}")
+        print(f" Test failed: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -122,7 +122,7 @@ def quick_test():
 if __name__ == '__main__':
     success = quick_test()
     if success:
-        print("\n✅ Quick test completed successfully!")
+        print("\n Quick test completed successfully!")
         print("You can now run the full training with: python run_attention_model.py")
     else:
-        print("\n❌ Quick test failed. Please check the error messages above.")
+        print("\n Quick test failed. Please check the error messages above.")

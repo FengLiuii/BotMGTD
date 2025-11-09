@@ -8,7 +8,7 @@ import os
 
 def configure_font():
     
-    print("🔧 Configuring matplotlib font...")
+    print(" Configuring matplotlib font...")
     
     
     if platform.system() == 'Windows':
@@ -136,7 +136,7 @@ if __name__ == '__main__':
         
        
         fonts = get_available_fonts()
-        print(f"\n📋 Available fonts ({len(fonts)}):")
+        print(f"\n Available fonts ({len(fonts)}):")
         for i, font in enumerate(fonts[:10]): 
             print(f"   {i+1}. {font}")
         if len(fonts) > 10:

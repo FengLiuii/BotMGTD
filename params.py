@@ -2,8 +2,8 @@ import argparse
 
 def ParseArgs():
 	parser = argparse.ArgumentParser(description='Model Params')
-	parser.add_argument('--lr', default=1e-2, type=float, help='learning rate')#tune source:1e-3  # 1e-2
-	parser.add_argument('--difflr', default=1e-2, type=float, help='learning rate')  # Twibot20 1e-2
+	parser.add_argument('--lr', default=1e-2, type=float, help='learning rate')
+	parser.add_argument('--difflr', default=1e-2, type=float, help='learning rate')  
 	parser.add_argument('--batch', default=512, type=int, help='batch size')
 	parser.add_argument('--patience',   type=int,   default=20)
 	# parser.add_argument('--ratio', type=int, default=[20, 40, 60])
@@ -20,10 +20,7 @@ def ParseArgs():
 	parser.add_argument('--tb_log_dir', default='', type=str, help='tb_log_dir')
 
 
-	#ssl setting
-	# parser.add_argument('--ssl_reg', default=1, type=float, help='contrastive regularizer')
-	# parser.add_argument('--temp', default=1, type=float, help='temperature for ssl')
-	# parser.add_argument('--eps', default=0.2, type=float, help='scaled weight as reward')
+
 
 	#gat setting
 	parser.add_argument('--head', default=4, type=int, help='number of heads in attention')
@@ -35,7 +32,7 @@ def ParseArgs():
 	parser.add_argument('--decay_step', type=int,   default=1)
 	parser.add_argument('--init', default=False, type=bool, help='whether initial embedding')
 	parser.add_argument('--latdim', default=128, type=int, help='embedding size')
-	parser.add_argument('--uugt_layer', default=1, type=int, help='number of gt layers')#  MGTAB [2,2 1,3 1,1]
+	parser.add_argument('--uugt_layer', default=1, type=int, help='number of gt layers') 
 	parser.add_argument('--uugt_layer', default=1, type=int, help='number of gt layers')  
 	parser.add_argument('--load_model', default=None, help='model name to load')
 	parser.add_argument('--topk', default=20, type=int, help='K of top K')
@@ -44,12 +41,12 @@ def ParseArgs():
 	
 	
 	#diffusion setting
-	parser.add_argument('--dims', type=str, default='[128]')  # Twibot 182
+	parser.add_argument('--dims', type=str, default='[128]')  
 	parser.add_argument('--d_emb_size', type=int, default=8)
 	parser.add_argument('--norm', type=bool, default=True)
-	parser.add_argument('--steps', type=int, default=5)#tune 5  50 100 150 200
-	parser.add_argument('--noise_scale', type=float, default=5e-5) #tune
-	parser.add_argument('--noise_min', type=float, default=0.0001)
+	parser.add_argument('--steps', type=int, default=5) #tune 5  50 100 150 200
+	parser.add_argument('--noise_scale', type=float, default=1e-5) 
+	parser.add_argument('--noise_min', type=float, default=0.00001)
 	parser.add_argument('--noise_max', type=float, default=0.001)
 	parser.add_argument('--sampling_steps', type=int, default=0)
 
@@ -59,6 +56,3 @@ def ParseArgs():
 args = ParseArgs()
 
 
-#tmall :lr 1e-3  batch:4096 2048   layer:2 reg:3e-2 steps:200 noise-scale:1e-4
-
-#retail_rocket :lr 1e-3  batch:4096 2048   layer:2 reg:3e-2 steps:150 noise-scale:1e-4

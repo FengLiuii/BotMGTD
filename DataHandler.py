@@ -165,7 +165,7 @@ class DataHandler:
                 np.save(self.predir + f"val_{int(ratio*10)}.npy", val_idx)
                 np.save(self.predir + f"test_{int(ratio*10)}.npy", test_idx)
 
-                print(f"✅ data split {ratio} saved | train: {len(train_idx)} | val: {len(val_idx)} | test: {len(test_idx)}")
+                print(f" data split {ratio} saved | train: {len(train_idx)} | val: {len(val_idx)} | test: {len(test_idx)}")
 
         
         train_idx = [np.load(self.predir + f"train_{int(i*10)}.npy") for i in args.ratio]
@@ -177,7 +177,7 @@ class DataHandler:
         val_idx = [t.LongTensor(i).to(device) for i in val_idx]
         test_idx = [t.LongTensor(i).to(device) for i in test_idx]
 
-        print(f"✅ data loaded successfully | train: {len(train_idx[0])} | val: {len(val_idx[0])} | test: {len(test_idx[0])}")
+        print(f" data loaded successfully | train: {len(train_idx[0])} | val: {len(val_idx[0])} | test: {len(test_idx[0])}")
 
         
         self.hete_adj1 = follower_mat

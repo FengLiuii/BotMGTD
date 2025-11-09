@@ -109,7 +109,7 @@ class AttentionCoach:
 
             for repeat in range(1):  
                 self.prepareModel()
-                log(f'🔁 Repeat {repeat+1}/1')
+                log(f' Repeat {repeat+1}/1')
 
             
                 test_lbls = torch.argmax(self.label[self.test_idx[ratio_idx]], dim=-1).detach().cpu().numpy()
