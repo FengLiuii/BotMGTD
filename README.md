@@ -120,5 +120,17 @@ class AttentionBasedRelationFusion(nn.Module):
 ## Citation
 
 If you use this attention aggregation version, please cite:
+```LaTex
+@article{liu2026robust,
+  title={Robust social bot detection via multi-relational and noise-aware representation modeling},
+  author={Liu, Feng and Jiang, Bingchuan and Ma, Rui},
+  journal={Information Processing \& Management},
+  volume={63},
+  number={6},
+  pages={104737},
+  year={2026},
+  publisher={Elsevier}
+}
+```
 
 
